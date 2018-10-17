@@ -1,0 +1,23 @@
+<title>Proceedings of the 18th International Society for Music Information Retrieval Conference, ISMIR 2017, Suzhou, China, October 23-27, 2017</title>
+<booktitle>ISMIR 2017</booktitle>
+<editor>Sally Jo Cunningham</editor>
+<editor>Zhiyao Duan</editor>
+<editor>Xiao Hu</editor>
+<editor>Douglas Turnbull</editor>
+<publisher></publisher>
+<series></series>
+<volume></volume>
+<year>2017</year>
+<issn></issn>
+<isbn></isbn>
+
+<h2>Papers</h2>
+<ul>
+{%- for publication in entries %}
+<li>{{ publication.authors }}:
+{{ publication.title }}.
+{{ publication.paper_startpage }}-{{ publication.paper_endpage }}
+<ee>{{ publication.url }}</ee>
+{%- endfor %}
+</ul>
+<footer>

@@ -1,0 +1,9 @@
+name: dblp_conf
+
+channels:
+  - defaults
+
+dependencies:
+  - python=3.6
+  - beautifulsoup4
+  - jinja2
