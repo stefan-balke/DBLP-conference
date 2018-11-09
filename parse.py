@@ -24,12 +24,8 @@ def get_dblp_key(authors, year):
 
     # append co-authors' first letter from name
     for au in authors[1:]:
-        for n in au.split()[::-1]:
-            if '.' in n:
-                continue
-            else:
-                key += n[:1]
-                break
+        cur_author = HumanName(au)
+        key += cur_author.last[0]
 
     # add year
     key += str(year)[2:]

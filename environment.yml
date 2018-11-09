@@ -8,3 +8,5 @@ dependencies:
   - beautifulsoup4
   - jinja2
   - simplejson
+  - pip:
+      - nameparser
