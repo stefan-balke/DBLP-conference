@@ -17,6 +17,7 @@ def get_dblp_key(authors, year):
     key = HumanName(authors[0]).last
     key = key.capitalize()  # e.g. de Val
     key = key.replace(' ', '')
+    key = key.replace('-', '')
     key = key.replace('ß', 'ss')
     key = key.replace('ä', 'ae')
     key = key.replace('ö', 'oe')
