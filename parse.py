@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 import jinja2
 import simplejson as json
 import string
+from nameparser import HumanName
+import unicodedata
 
 
 def get_dblp_key(authors, year):
@@ -12,7 +14,13 @@ def get_dblp_key(authors, year):
         authors = [authors]
 
     # start with first author's full name
-    key = authors[0].split()[-1]
+    key = HumanName(authors[0]).last
+    key = key.capitalize()  # e.g. de Val
+    key = key.replace(' ', '')
+    key = key.replace('ß', 'ss')
+    key = key.replace('ä', 'ae')
+    key = key.replace('ö', 'oe')
+    key = key.replace('ü', 'ue')
 
     # append co-authors' first letter from name
     for au in authors[1:]:
@@ -26,7 +34,9 @@ def get_dblp_key(authors, year):
     # add year
     key += str(year)[2:]
 
-    return ''.join([s for s in key if s in string.ascii_letters + string.digits + '-'])
+    key = unicodedata.normalize('NFKD', key).encode('ascii', 'ignore').decode()
+
+    return str(key)
 
 
 def check_key(key, keys):
